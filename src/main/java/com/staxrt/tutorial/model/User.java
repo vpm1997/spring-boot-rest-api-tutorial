@@ -1,86 +1,55 @@
-/*
- *
- *  Copyright (c) 2018-2020 Givantha Kalansuriya, This source is a part of
- *   Staxrt - sample application source code.
- *   http://staxrt.com
- *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- *
- */
-
 package com.staxrt.tutorial.model;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.*;
+import java.time.LocalDateTime;
 
-import java.util.Date;
-
-/**
- * The type User.
- *
- * @author Givantha Kalansuriya
- */
-@Entity
-@Table(name = "users")
-@EntityListeners(AuditingEntityListener.class)
+@Table("users")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
+  @Column("first_name")
+  private String firstName;
 
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
+  @Column("last_name")
+  private String lastName;
 
-    @Column(name = "email_address", nullable = false)
-    private String email;
+  @Column("email_address")
+  private String email;
 
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false)
-    private Date createdAt;
+  @CreatedDate
+  @Column("created_at")
+  private LocalDateTime createdAt;
 
-    @Column(name = "created_by", nullable = false)
-    @CreatedBy
-    private String createdBy;
+  @CreatedBy
+  @Column("created_by")
+  private String createdBy;
 
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", nullable = false)
-    private Date updatedAt;
+  @LastModifiedDate
+  @Column("updated_at")
+  private LocalDateTime updatedAt;
 
-    @Column(name = "updated_by", nullable = false)
-    @LastModifiedBy
-    private String updatedBy;
+  @LastModifiedBy
+  @Column("updated_by")
+  private String updatedBy;
 
   /**
    * Gets id.
    *
    * @return the id
    */
-  public long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
   /**
    * Sets id.
@@ -88,8 +57,8 @@ public class User {
    * @param id the id
    */
   public void setId(long id) {
-        this.id = id;
-    }
+    this.id = id;
+  }
 
   /**
    * Gets first name.
@@ -97,8 +66,8 @@ public class User {
    * @return the first name
    */
   public String getFirstName() {
-        return firstName;
-    }
+    return firstName;
+  }
 
   /**
    * Sets first name.
@@ -106,8 +75,8 @@ public class User {
    * @param firstName the first name
    */
   public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    this.firstName = firstName;
+  }
 
   /**
    * Gets last name.
@@ -115,8 +84,8 @@ public class User {
    * @return the last name
    */
   public String getLastName() {
-        return lastName;
-    }
+    return lastName;
+  }
 
   /**
    * Sets last name.
@@ -124,8 +93,8 @@ public class User {
    * @param lastName the last name
    */
   public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    this.lastName = lastName;
+  }
 
   /**
    * Gets email.
@@ -133,8 +102,8 @@ public class User {
    * @return the email
    */
   public String getEmail() {
-        return email;
-    }
+    return email;
+  }
 
   /**
    * Sets email.
@@ -142,26 +111,26 @@ public class User {
    * @param email the email
    */
   public void setEmail(String email) {
-        this.email = email;
-    }
+    this.email = email;
+  }
 
   /**
    * Gets created at.
    *
    * @return the created at
    */
-  public Date getCreatedAt() {
-        return createdAt;
-    }
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
 
   /**
    * Sets created at.
    *
    * @param createdAt the created at
    */
-  public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
 
   /**
    * Gets created by.
@@ -169,8 +138,8 @@ public class User {
    * @return the created by
    */
   public String getCreatedBy() {
-        return createdBy;
-    }
+    return createdBy;
+  }
 
   /**
    * Sets created by.
@@ -178,26 +147,26 @@ public class User {
    * @param createdBy the created by
    */
   public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
+    this.createdBy = createdBy;
+  }
 
   /**
    * Gets updated at.
    *
    * @return the updated at
    */
-  public Date getUpdatedAt() {
-        return updatedAt;
-    }
+  public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+  }
 
   /**
    * Sets updated at.
    *
    * @param updatedAt the updated at
    */
-  public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+  public void setUpdatedAt(LocalDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 
   /**
    * Gets updated by.
@@ -205,8 +174,8 @@ public class User {
    * @return the updated by
    */
   public String getUpdatedBy() {
-        return updatedBy;
-    }
+    return updatedBy;
+  }
 
   /**
    * Sets updated by.
@@ -214,22 +183,20 @@ public class User {
    * @param updatedBy the updated by
    */
   public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
+    this.updatedBy = updatedBy;
+  }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", createdAt=" + createdAt +
-                ", createdBy='" + createdBy + '\'' +
-                ", updatedAt=" + updatedAt +
-                ", updatedby='" + updatedBy + '\'' +
-                '}';
-    }
-
-
+  @Override
+  public String toString() {
+    return "User{" +
+        "id=" + id +
+        ", firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", email='" + email + '\'' +
+        ", createdAt=" + createdAt +
+        ", createdBy='" + createdBy + '\'' +
+        ", updatedAt=" + updatedAt +
+        ", updatedby='" + updatedBy + '\'' +
+        '}';
+  }
 }

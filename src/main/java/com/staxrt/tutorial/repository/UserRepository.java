@@ -1,13 +1,14 @@
 package com.staxrt.tutorial.repository;
 
+
 import com.staxrt.tutorial.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import reactor.core.publisher.Mono;
 
 /**
  * The interface User repository.
- *
- * @author Givantha Kalansuriya
  */
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {}
+public interface UserRepository extends R2dbcRepository<User, Long> {
+
+  Mono<User> findByEmail(String email);
+}
