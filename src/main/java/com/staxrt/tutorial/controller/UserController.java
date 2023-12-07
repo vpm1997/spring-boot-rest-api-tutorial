@@ -4,6 +4,7 @@ import com.staxrt.tutorial.exception.ErrorResponse;
 import com.staxrt.tutorial.exception.ResourceNotFoundException;
 import com.staxrt.tutorial.model.User;
 import com.staxrt.tutorial.repository.UserRepository;
+import com.staxrt.tutorial.repository.UserService;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.NestedExceptionUtils;
@@ -27,6 +28,8 @@ public class UserController {
 
   @Autowired
   private UserRepository userRepository;
+  @Autowired
+  private UserService userService;
 
   /**
    * Get all users flux.
@@ -46,7 +49,7 @@ public class UserController {
    */
   @GetMapping("/{id}")
   public Mono<ResponseEntity<User>> getUsersById(@PathVariable(value = "id") Long userId) {
-    return userRepository.findById(userId)
+    return userService.getUserById(userId)
         .map(user -> ResponseEntity.ok(user))
         .switchIfEmpty(Mono.error(new ResourceNotFoundException("User not found on :: " + userId)));
   }
