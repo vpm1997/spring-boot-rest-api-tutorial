@@ -28,6 +28,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -127,5 +129,10 @@ public class UserController {
     Map<String, Boolean> response = new HashMap<>();
     response.put("deleted", Boolean.TRUE);
     return response;
+  }
+
+  @GetMapping("/users/{id}")
+  public List<User> getListOfUsers(@RequestParam String userIds){
+    return new ArrayList<>();
   }
 }
