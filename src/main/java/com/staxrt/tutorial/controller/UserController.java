@@ -48,16 +48,6 @@ public class UserController {
   private UserRepository userRepository;
 
   /**
-   * Get all users list.
-   *
-   * @return the list
-   */
-  @GetMapping("/users")
-  public List<User> getAllUsers() {
-    return userRepository.findAll();
-  }
-
-  /**
    * Gets users by id.
    *
    * @param userId the user id
@@ -129,6 +119,11 @@ public class UserController {
     Map<String, Boolean> response = new HashMap<>();
     response.put("deleted", Boolean.TRUE);
     return response;
+  }
+
+  @GetMapping("/users")
+  public List<User> getAllUsers() {
+    return userRepository.findAll();
   }
 
   @GetMapping("/users/{id}")
