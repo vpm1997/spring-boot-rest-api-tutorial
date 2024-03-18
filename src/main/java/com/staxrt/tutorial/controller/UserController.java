@@ -30,6 +30,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 import java.util.ArrayList;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -121,15 +123,13 @@ public class UserController {
     return response;
   }
 
-  // came from feature1
-  @GetMapping("/users/{id}")
-  public List<User> getListOfUsers(@RequestParam String userIds){
-    return new ArrayList<>();
-  }
-   
-  // came from feature2
   @GetMapping("/users")
   public List<User> getAllUsers() {
     return userRepository.findAll();
+  }
+
+  @GetMapping("/users/{id}")
+  public List<User> getListOfUsers(@RequestParam String userIds){
+    return new ArrayList<>();
   }
 }
