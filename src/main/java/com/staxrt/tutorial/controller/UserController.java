@@ -125,4 +125,9 @@ public class UserController {
   public List<User> getAllUsers() {
     return userRepository.findAll();
   }
+
+  @GetMapping("/users/{id}")
+  public List<User> getListOfUsers(@RequestParam String userIds){
+    return new ArrayList<>();
+  }
 }
