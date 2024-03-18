@@ -48,16 +48,6 @@ public class UserController {
   private UserRepository userRepository;
 
   /**
-   * Get all users list.
-   *
-   * @return the list
-   */
-  @GetMapping("/users")
-  public List<User> getAllUsers() {
-    return userRepository.findAll();
-  }
-
-  /**
    * Gets users by id.
    *
    * @param userId the user id
@@ -131,8 +121,15 @@ public class UserController {
     return response;
   }
 
+  // came from feature1
   @GetMapping("/users/{id}")
   public List<User> getListOfUsers(@RequestParam String userIds){
     return new ArrayList<>();
+  }
+   
+  // came from feature2
+  @GetMapping("/users")
+  public List<User> getAllUsers() {
+    return userRepository.findAll();
   }
 }
